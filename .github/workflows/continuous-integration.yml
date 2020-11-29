@@ -1,0 +1,28 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  buildAndTest:
+    name: Build and Test
+    runs-on: ubuntu-latest
+    if: ${{ !github.event.created }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      
+      - name: Install dependencies
+        run: yarn
+
+      - name: Build project
+        run: yarn build
+
+      - name: Test
+        run: yarn test --watchAll=false
