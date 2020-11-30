@@ -9,6 +9,7 @@ const ReplayMenu: React.FC<ManageData> = ({
   answers,
   setAnswers
 }) => {
+  const current_answers = [...answers]
   const handleStateChange = useCallback(() => {
     // Reset Game
     getNewQuestions().then(response => {
@@ -23,13 +24,7 @@ const ReplayMenu: React.FC<ManageData> = ({
       <header className="App-header">
         <h1>
           Here is your score:{" "}
-          {questions.filter(
-              (q, index) =>
-                JSON.parse(
-                  q.correct_answer.toLowerCase()
-                ) === answers[index]
-            ).length
-          }/{questions.length}
+          {current_answers.length}/{questions.length}
         </h1>
         <button onClick={() => handleStateChange()}>Play again!</button>
       </header>
