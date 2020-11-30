@@ -1,8 +1,10 @@
 import React from "react";
 
-import Menu from "./components/Menu"
-import GameScreen from "./components/GameScreen"
-import ReplayMenu from "./components/ReplayMenu"
+import Menu from "./containers/Menu"
+import GameScreen from "./containers/GameScreen"
+import ReplayMenu from "./containers/ReplayMenu"
+
+import Footer from "./components/Footer"
 
 import { QuizSchema, GameState } from "./helpers/types"
 import { getNewQuestions } from "./helpers/API"
@@ -15,31 +17,31 @@ function App() {
   const [answers, setAnswers] = React.useState<QuizSchema[]>([]);
 
   React.useEffect(() => {
-    getNewQuestions().then(response  => {
+    getNewQuestions().then(response => {
       setQuestions(response.questions);
       setAnswers([]);
-    });    
+    });
   }, []);
 
+  let currentStateContainer = null;
+
   if (state === "menu") {
-    return (
-      <Menu onStateChange={setState}/>
-    );
+    currentStateContainer = <Menu onStateChange={setState} />
   }
 
   else if (state === "play") {
-    return (
-        <GameScreen
-          onStateChange={setState}
-          questions={questions}
-          answers={answers}
-          setAnswers={setAnswers}
-        ></GameScreen>
+    currentStateContainer = (
+      <GameScreen
+        onStateChange={setState}
+        questions={questions}
+        answers={answers}
+        setAnswers={setAnswers}
+      ></GameScreen>
     );
   }
 
   else if (state === "end") {
-    return (
+    currentStateContainer = (
       <ReplayMenu
         onStateChange={setState}
         questions={questions}
@@ -49,9 +51,15 @@ function App() {
       ></ReplayMenu>
     );
   }
-  else {
-    return <div></div>
-  }
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        {currentStateContainer}
+      </header>      
+      <Footer></Footer>
+    </div>
+  )
 }
 
 export default App;

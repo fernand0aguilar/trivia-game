@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
 import { ManageData } from "../helpers/types"
 import { getNewQuestions } from "../helpers/API"
+import QuestionList from "../components/QuestionList";
 
 const ReplayMenu: React.FC<ManageData> = ({
   onStateChange,
@@ -20,14 +21,16 @@ const ReplayMenu: React.FC<ManageData> = ({
   }, [onStateChange, setQuestions, setAnswers])
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>
-          Here is your score:{" "}
-          {current_answers.length}/{questions.length}
-        </h1>
-        <button onClick={() => handleStateChange()}>Play again!</button>
-      </header>
+    <div>
+      <h1>
+        Here is your score:{" "}
+        {current_answers.length}/{questions.length}
+      </h1>
+      <button onClick={() => handleStateChange()}>Play again!</button>
+      <QuestionList 
+        questions={questions}
+        answers={current_answers}>
+      </QuestionList>
     </div>
   )
 }

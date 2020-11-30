@@ -21,6 +21,26 @@
   color: #ffc700;
 }
 
+.question-li-item {
+  ::marker{
+    width: 20px;
+    height: 20px;
+    border: "2px solid #420";
+    border-radius: "50%";
+  }
+}
+.question-item-right {
+  @extend .question-li-item;
+  display: inline;
+  background-color: green;
+}
+.question-item-wrong {
+  @extend .question-li-item;
+  display: inline;
+  background-color: red;
+}
+
+
 
 .btn-group {
     display: flex;
