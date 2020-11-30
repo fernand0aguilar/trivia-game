@@ -1,19 +1,22 @@
 ![](https://github.com/fernand0aguilar/trivia-game/workflows/Continuous%20Integration/badge.svg)
 
 ![](https://github.com/fernand0aguilar/trivia-game/workflows/Continuous%20Deployment/badge.svg)
+
 # trivia-game
 
 A simple trivia game made with React / Typescript / Sass
 
-> Clone, install dependencies, run with 'yarn start'
+> Clone, install dependencies, 
+> run with 'yarn start'
 
-# Environments 
+# Environments
 
-[Staging](http://fraguilar-trivia-game-staging.s3-website.eu-west-2.amazonaws.com/) | 
+[Staging](http://fraguilar-trivia-game-staging.s3-website.eu-west-2.amazonaws.com/) |
 [Production](http://fraguilar-trivia-game-production.s3-website.eu-west-2.amazonaws.com/)
 
 ## Project Tree
 
+```
 ├── README.md
 ├── src
 │   ├── App.scss
@@ -36,4 +39,4 @@ A simple trivia game made with React / Typescript / Sass
 │   └── setupTests.ts
 ├── tsconfig.json
 ├── package.json
-
+```
